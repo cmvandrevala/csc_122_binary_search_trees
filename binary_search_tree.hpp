@@ -19,31 +19,37 @@ class BinarySearchTree
 {
   Node<T> *root;
 
-  Node<T> *makeEmpty(Node<T> *t)
+  Node<T> *clear(Node<T> *node)
   {
-    if (t == nullptr)
+    if (node == nullptr)
       return nullptr;
     {
-      makeEmpty(t->left);
-      makeEmpty(t->right);
-      delete t;
+      // This is postorder traversal! So cool!
+      clear(node->left);
+      clear(node->right);
+      delete node;
     }
     return nullptr;
   }
 
-  Node<T> *insert(int x, Node<T> *t)
+  Node<T> *insert(T data, Node<T> *node)
   {
-    if (t == nullptr)
+    if (node == nullptr)
     {
-      t = new Node<T>;
-      t->data = x;
-      t->left = t->right = nullptr;
+      node = new Node<T>;
+      node->data = data;
+      node->left = nullptr;
+      node->right = nullptr;
     }
-    else if (x < t->data)
-      t->left = insert(x, t->left);
-    else if (x > t->data)
-      t->right = insert(x, t->right);
-    return t;
+    else if (data < node->data)
+    {
+      node->left = insert(data, node->left);
+    }
+    else if (data > node->data)
+    {
+      node->right = insert(data, node->right);
+    }
+    return node;
   }
 
   Node<T> *min(Node<T> *node)
@@ -76,34 +82,6 @@ class BinarySearchTree
     {
       return max(node->right);
     }
-  }
-
-  Node<T> *remove(int x, Node<T> *t)
-  {
-    Node<T> *temp;
-    if (t == nullptr)
-      return nullptr;
-    else if (x < t->data)
-      t->left = remove(x, t->left);
-    else if (x > t->data)
-      t->right = remove(x, t->right);
-    else if (t->left && t->right)
-    {
-      temp = min(t->right);
-      t->data = temp->data;
-      t->right = remove(t->data, t->right);
-    }
-    else
-    {
-      temp = t;
-      if (t->left == nullptr)
-        t = t->right;
-      else if (t->right == nullptr)
-        t = t->left;
-      delete temp;
-    }
-
-    return t;
   }
 
   void inorder(Node<T> *node)
@@ -140,24 +118,23 @@ class BinarySearchTree
     cout << node->data << ", ";
   }
 
-  Node<T> *search(Node<T> *node, T x)
+  Node<T> *search(Node<T> *node, T data)
   {
     if (node == nullptr)
     {
       return nullptr;
     }
-    else if (x < node->data && node->left != nullptr)
+    else if (data < node->data && node->left != nullptr)
     {
       cout << "Going left to " << node->left->data << "!" << endl;
-      return search(node->left, x);
+      return search(node->left, data);
     }
-    else if (x > node->data && node->right != nullptr)
+    else if (data > node->data && node->right != nullptr)
     {
       cout << "Going right to " << node->right->data << "!" << endl;
-      return search(node->right, x);
+      return search(node->right, data);
     }
-
-    else if (node->data != x)
+    else if (node->data != data)
     {
       cout << "This element does not exist in the list! Here is the node that we got to..." << endl;
       return node;
@@ -177,7 +154,7 @@ public:
 
   ~BinarySearchTree()
   {
-    root = makeEmpty(root);
+    clear(root);
   }
 
   Node<T> *min()
@@ -190,19 +167,14 @@ public:
     return max(root);
   }
 
-  Node<T> *search(T x)
+  Node<T> *search(T data)
   {
-    return search(root, x);
+    return search(root, data);
   }
 
-  void insert(int x)
+  void insert(T data)
   {
-    root = insert(x, root);
-  }
-
-  void remove(int x)
-  {
-    root = remove(x, root);
+    root = insert(data, root);
   }
 
   void inorder()
