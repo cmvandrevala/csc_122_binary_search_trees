@@ -126,22 +126,22 @@ class BinarySearchTree
     }
     else if (data < node->data && node->left != nullptr)
     {
-      cout << "Going left to " << node->left->data << "!" << endl;
+      // cout << "Going left to " << node->left->data << "!" << endl;
       return search(node->left, data);
     }
     else if (data > node->data && node->right != nullptr)
     {
-      cout << "Going right to " << node->right->data << "!" << endl;
+      // cout << "Going right to " << node->right->data << "!" << endl;
       return search(node->right, data);
     }
     else if (node->data != data)
     {
-      cout << "This element does not exist in the list! Here is the node that we got to..." << endl;
+      // cout << "This element does not exist in the list! Here is the node that we got to..." << endl;
       return node;
     }
     else
     {
-      cout << "Arrived at the correct node!" << endl;
+      // cout << "Arrived at the correct node!" << endl;
       return node;
     }
   }
