@@ -65,7 +65,7 @@ int main()
   cout << "The value for key d is " << tm.get("d") << endl;
   cout << "The value for key b is " << tm.get("b") << endl;
 
-  // What is happening here? 😬
+  // Oh no! What is happening here? :(
   cout << "The value for key f is " << tm.get("f") << endl;
 
   return 0;
