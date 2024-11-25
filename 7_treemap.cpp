@@ -53,10 +53,10 @@ int main()
 
   TreeMap tm;
 
-  tm.insert("a", 5);
-  tm.insert("b", 15);
   tm.insert("c", 35);
   tm.insert("d", -1);
+  tm.insert("a", 5);
+  tm.insert("b", 15);
   tm.insert("e", 2);
 
   int e = tm.get("e");

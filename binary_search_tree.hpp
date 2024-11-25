@@ -1,8 +1,5 @@
-/*
-** Binary Search Tree implementation in C++
-** Harish R
-*/
 #include <iostream>
+
 using namespace std;
 
 template <typename T>
