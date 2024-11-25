@@ -59,14 +59,30 @@ int main()
   tm.insert("d", -1);
   tm.insert("e", 2);
 
-  cout << "The value for key e is " << tm.get("e") << endl;
-  cout << "The value for key c is " << tm.get("c") << endl;
-  cout << "The value for key a is " << tm.get("a") << endl;
-  cout << "The value for key d is " << tm.get("d") << endl;
-  cout << "The value for key b is " << tm.get("b") << endl;
+  int e = tm.get("e");
+  cout << "The value for key e is " << e << endl
+       << endl;
+
+  int c = tm.get("c");
+  cout << "The value for key c is " << c << endl
+       << endl;
+
+  int a = tm.get("a");
+  cout << "The value for key a is " << a << endl
+       << endl;
+
+  int d = tm.get("d");
+  cout << "The value for key d is " << d << endl
+       << endl;
+
+  int b = tm.get("b");
+  cout << "The value for key b is " << b << endl
+       << endl;
 
   // Oh no! What is happening here? :(
-  cout << "The value for key f is " << tm.get("f") << endl;
+  int f = tm.get("f");
+  cout << "The value for key f is " << f << endl
+       << endl;
 
   return 0;
 }

@@ -27,7 +27,7 @@ int main()
 {
   BinarySearchTree<TodoItem> tree;
 
-  array<int, 10> values = {8, 14, 150, -10, 30, 2, 4, 7, 1, 32};
+  array<int, 10> values = {8, 14, 150, 0, 30, 2, 4, 7, 1, 9};
   for (int i = 0; i < 10; i++)
   {
     TodoItem item(values[i]);
@@ -35,10 +35,10 @@ int main()
   }
 
   Node<TodoItem> *max = tree.max();
-  cout << max->data.priority << endl;
+  cout << "The maximal priority is " << max->data.priority << endl;
 
   Node<TodoItem> *min = tree.min();
-  cout << min->data.priority << endl;
+  cout << "The minimal priority is " << min->data.priority << endl;
 
   return 0;
 }
